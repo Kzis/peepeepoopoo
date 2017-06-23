@@ -31,11 +31,11 @@ export default {
   name: 'navbar',
   data: function() {
     return {
-      title: 'Chalath Yess Nook',
+      title: 'Pee Pee Poo Poo',
       routes: [
         { to: '/', title: 'Search' },
         { to: '/add-toilet', title: 'Add' },
-         { to: '/comment', title: 'Arm gay' }
+        { to: '/comment', title: 'Comment' }
       ]
     }
   },
