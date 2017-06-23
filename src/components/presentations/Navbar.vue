@@ -34,7 +34,8 @@ export default {
       title: 'Chalath Yess Nook',
       routes: [
         { to: '/', title: 'Search' },
-        { to: '/add-toilet', title: 'Add' }
+        { to: '/add-toilet', title: 'Add' },
+         { to: '/comment', title: 'Arm gay' }
       ]
     }
   },

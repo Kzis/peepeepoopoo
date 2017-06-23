@@ -1,19 +1,23 @@
 <template>
-  <div class="hello">
-    <gmap-map
-      :center="center"
-      :zoom="7"
-      style="width: 100%; height: 300px"
-    >
-      <gmap-marker
-        :key="index"
-         v-for="(m, index) in markers"
-        :position="m.position"
-        :icon="m.icon"
-        :clickable="true"
-      ></gmap-marker>
-    </gmap-map>
+ 
+  <div class="seaech-googlemap">
+     <div class="hello">
+        <gmap-map
+          :center="center"
+          :zoom="7"
+          style="width: 100%; height: 300px"
+        >
+        <gmap-marker
+          :key="index"
+          v-for="(m, index) in markers"
+          :position="m.position"
+          :icon="m.icon"
+          :clickable="true"
+        ></gmap-marker>
+      </gmap-map>
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -37,6 +41,10 @@ export default {
 
 
 <style scoped>
+
+  .seaech-googlemap{
+    margin : 1%;
+  }
 
 </style>
 
