@@ -11,8 +11,13 @@
 </template>
 
 <script>
+import { db } from './configs/firebase.js'
+
 export default {
-  name: 'app'
+  name: 'app',
+  firebase: {
+
+  },
 }
 </script>
 
