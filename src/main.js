@@ -3,7 +3,7 @@
 //import stylesheet
 require('./styles/application.css')
 require('vue-material/dist/vue-material.css')
-require('bootstrap/dist/bootstrap.min.css')
+require('bootstrap/dist/css/bootstrap.min.css')
 
 import Vue from 'vue'
 import App from './App'
@@ -20,8 +20,7 @@ Vue.use(VueFire)
 Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyBfKA94ZnVcppyzxqGeLYZAj4_k8IRSvTQ',
-    v: '3.26',                // Google Maps API version 
-    // libraries: 'places',   // If you want to use places input 
+    v: '3.26',  // Google Maps API version 
   }
 })
 
