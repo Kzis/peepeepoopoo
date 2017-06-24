@@ -22,7 +22,7 @@
         <gmap-info-window :opened="m.showinfocard || false">
           <div>
             <h5> {{ m.place_name }} </h5>
-            by {{ m.create_user }} | price : {{ m.price }} <span v-if="m.price!='FREE'">฿</span>
+            by {{ m.creater_name }} | price : {{ m.price }} <span v-if="m.price!='FREE'">฿</span>
           </div>
         </gmap-info-window>
       </gmap-marker>
@@ -64,7 +64,7 @@
                   </md-card-actions>
                 </md-card>
               </md-tab>
-              <md-tab md-icon="mode_edit">
+              <md-tab md-icon="mode_edit" v-if="user.uid==item.creater_id">
                 <form novalidate @submit.stop.prevent="submit">
                   <md-input-container md-inline>
                     <label>Place Name</label>
@@ -82,7 +82,7 @@
                   <md-button class="md-raised md-primary" @click="editItem(item)">Save</md-button>
                 </form>
               </md-tab>
-              <md-tab md-icon="delete" >
+              <md-tab md-icon="delete" v-if="user.uid==item.creater_id">
                 <h3>Make sure you really want to delete this!</h3>
                 <md-button class="md-raised md-warn" @click="deleteItem(item)">Delete!</md-button>
               </md-tab>
@@ -106,7 +106,7 @@
 
 <script>
 import svg from '../configs/svg.js'
-import { db } from './../configs/firebase.js'
+import { auth, db } from './../configs/firebase.js'
 export default {
   name: 'search-toilet',  
   firebase: {
@@ -125,7 +125,8 @@ export default {
       toilet_icon : svg.TOILET,
       toilet_markers : [],
       toilet_detail : {},
-      successMsg: "Your action was successfully executed."
+      successMsg: "Your action was successfully executed.",
+      user : auth.currentUser
     }
   },
   methods: {
