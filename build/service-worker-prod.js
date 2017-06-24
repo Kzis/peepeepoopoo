@@ -18,6 +18,20 @@
           (window.location.protocol === 'https:' || isLocalhost)) {
         navigator.serviceWorker.register('service-worker.js')
         .then(function(registration) {
+          // registration
+          console.log("=========> registration   <==============++====")
+          console.log(registration)
+          caches.keys().then((key) => { console.log(keys) })
+          console.log("=========> registration   <==============++====")
+          console.log("=========> registration   <==============++====")
+          console.log("=========> registration   <==============++====")
+          
+          
+          // registration.active = function() {
+          //   // console.log()
+          //   console.log(registration)
+          //   caches.keys().then((key) => { console.log(keys) })
+          // }
           // updatefound is fired if service-worker.js changes.
           registration.onupdatefound = function() {
             // updatefound is also fired the very first time the SW is installed,
@@ -27,7 +41,7 @@
             if (navigator.serviceWorker.controller) {
               // The updatefound event implies that registration.installing is set
               const installingWorker = registration.installing;
-
+              window.alert("if you wang to register")
               installingWorker.onstatechange = function() {
                 switch (installingWorker.state) {
                   case 'installed':
@@ -36,7 +50,7 @@
                     // It's the perfect time to display a "New content is
                     // available; please refresh." message in the page's interface.
                     break;
-
+                    
                   case 'redundant':
                     throw new Error('The installing ' +
                                     'service worker became redundant.');

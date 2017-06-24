@@ -19,6 +19,14 @@
           </div>
         </md-button>
 
+        <div style="flex:1;"></div>
+           <md-button style="width:90%; align-self:center; display:flex; justify-content:space-between; align-items:center;" class="md-raised md-primary" @click.native="logIn">
+            <div class="block-in-button ">
+              <img class="icon" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/facebook.svg" >
+              <label class="text-in-btn">Sign in with Facebook</label>
+            </div>
+          </md-button>
+
       </div>
 
 
@@ -87,7 +95,7 @@
 <script>
 import Firebase from 'firebase';
 import Images from '../configs/images.js';
-import { auth } from '../configs/firebase.js';
+import { auth, db } from '../configs/firebase.js';
 let provider = new Firebase.auth.FacebookAuthProvider();
 
 export default {
@@ -106,31 +114,38 @@ export default {
     logIn: function() {
       //log in with popup
       auth.signInWithPopup(this.provider).then((result) => {
+        let user = result.user;
         //handler case log-in success 
           alert("log in success view in log");
-          console.log("result: ", result)
+          console.log("result: ", user);
+
+          let name = user.displayName;
+          let email = user.email;
+          let photoUrl = user.photoURL;
+          let uid = user.uid;
+
+          db.ref('users/' + uid).set({
+            name: name,
+            email: email,
+            photoUrl: photoUrl
+          });
 
         }).catch(function(error) {
           //handler case log-in not success
           console.log("error: ", error)
 
         });
+    },
+
+    logOut: function() {
+      auth.signOut().then(() => {
+        //handler case log-out success
+        console.log('log out success');
+      }).catch(function(error) {
+        //handler case log-out not success
+        console.log('log out not success');
+        });
       }
-
-    //Now user
-
-    //   logOut: function() {
-    //     auth.signOut().then(() => {
-    //       //handler case log-out success
-    //       alert("log out success");
-    //       console.log('log out success');
-
-    //     }).catch(function(error) {
-    //       //handler case log-out not success
-    //       console.log('log out not success');
-
-    //     });
-    //   }
     }
 }
 </script>

@@ -39,7 +39,7 @@ export default {
   name: 'navbar',
   data: function() {
     return {
-      title: 'Pee Pee Poo Poo',
+      title: 'Pee Pee Poo Poo EiEi',
       routes: [
         { to: '/', title: 'Search' },
         { to: '/add-toilet', title: 'Add' },
