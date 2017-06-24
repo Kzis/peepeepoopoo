@@ -55,7 +55,7 @@
 
 
     <!-- CARD UI-->
-    <!--<div style="position:absolute; top:20px; left: 1%;">
+    <div style="position:absolute; top:20px; left: 1%;">
      <md-card>
         <md-card-header>
           <md-card-header-text>
@@ -72,7 +72,7 @@
           <md-button>Logout</md-button>
         </md-card-actions>
       </md-card>
-    </div>-->
+    </div>
      
     
   </div>
@@ -90,7 +90,8 @@ export default {
     return {
       user: auth.currentUser,
       provider: provider,
-      images: Images
+      images: Images,
+      isLogin: false
     }
   },
   created:function() {
@@ -121,6 +122,10 @@ export default {
           console.log("error: ", error)
 
         });
+    },
+
+    showModal:function() {
+      let
     },
 
     logOut: function() {
