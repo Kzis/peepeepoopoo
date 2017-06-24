@@ -23,8 +23,6 @@
           <div>
             <h5> {{ m.place_name }} </h5>
             by {{ m.create_user }} | price : {{ m.price }} <span v-if="m.price!='FREE'">฿</span>
-            <hr>
-            <button class="btn-default">See Comments</button>
           </div>
         </gmap-info-window>
       </gmap-marker>
@@ -37,38 +35,68 @@
   </div>
   <div class="phone-viewport">
     <md-toolbar md-theme="white">
-    <span class="md-title">Single Expand</span>
+    <span class="md-title">Toilet List</span>
     </md-toolbar>
 
     <md-list>
       <template v-for="(item,index) in toilet_markers">
         <md-list-item @click="showInfoCard(index)">
           <span>{{item.place_name}}</span>
-
           <md-list-expand>
-            <md-card>
-                <!-- <md-card-media>
-                  <img src="assets/card-image-1.jpg" alt="People">
-                </md-card-media> -->
-              <md-card-header>
-                <!-- <div class="md-title">Title goes here</div> -->
-                <div class="md-subhead">price : {{ item.price }} <span v-if="item.price!='FREE'">฿</span></div>
-              </md-card-header>
-              <md-card-content>
-                <p>{{item.description}}</p>
-              </md-card-content>
-              <md-card-actions>
-                <md-button> 
-                <router-link :to="'/comment/'+item['.key']">See comment </router-link>
-                </md-button>
-              </md-card-actions>
-            </md-card>
+            <md-tabs md-right>
+              <md-tab md-icon="info_outline">
+                <md-card>
+                  <!-- <md-card-media>
+                    <img src="assets/card-image-1.jpg" alt="People">
+                  </md-card-media> -->
+                  <md-card-header>
+                    <div class="md-subhead">
+                      price : {{ item.price }}<span v-if="item.price!='FREE'">฿</span>
+                    </div>
+                  </md-card-header>
+                  <md-card-content>
+                    <p>{{item.description}}</p>
+                  </md-card-content>
+                  <md-card-actions>
+                    <md-button> 
+                      <router-link :to="'/comment/'+item['.key']">See comment </router-link>
+                    </md-button>
+                  </md-card-actions>
+                </md-card>
+              </md-tab>
+              <md-tab md-icon="mode_edit">
+                <form novalidate @submit.stop.prevent="submit">
+                  <md-input-container md-inline>
+                    <label>Place Name</label>
+                    <md-input v-model="item.place_name"></md-input>
+                  </md-input-container>
+
+                  <md-input-container md-inline>
+                    <label>Price</label>
+                    <md-input v-model="item.price"></md-input>
+                  </md-input-container>
+                  <md-input-container>
+                    <label>Description</label>
+                    <md-textarea v-model="item.description"></md-textarea>
+                  </md-input-container>
+                  <md-button class="md-raised md-primary" @click="editItem(item)">Save</md-button>
+                </form>
+              </md-tab>
+            </md-tabs>
+            
           </md-list-expand>
         </md-list-item>
       </template>
     </md-list>
   </div>
 
+  <md-dialog-alert
+    md-title="Success!"
+    md-content="Your marker has been saved."
+    md-ok-text="Ok!"
+    @close="onClose"
+    ref="successDialog">
+  </md-dialog-alert>
 </div>
 
 </template>
@@ -107,6 +135,20 @@ export default {
       this.toilet_markers[index].showinfocard = true
       this.setCenter({lat:this.toilet_markers[index].x_location, lng : this.toilet_markers[index].y_location})
       console.log(index, this.toilet_markers[index].showinfocard)
+    },
+    editItem : function(item) {
+      const childKey = item['.key'];
+      delete item['.key'];
+      this.$firebaseRefs.toilet_markers.child(childKey).set(item, (err) => {
+        if(err) {
+          console.log("error :",err) 
+          return
+        }
+        this.$refs['successDialog'].open()
+      })
+    },
+    onClose(type) {
+      this.$router.push('/')
     },
     locationNew : function() {
         var self = this;
@@ -221,5 +263,7 @@ However, delay the fade out process for 2.5 seconds */
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
 }
+  .search-googlemap {
+  }
 </style>
 
