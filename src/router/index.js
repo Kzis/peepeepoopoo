@@ -32,7 +32,10 @@ export default new Router({
     {
       path: '/log-in',
       name: 'Login',
-      component: Login
+      component: Login,
+      props: {
+        auth
+      }
     }
   ]
 })
