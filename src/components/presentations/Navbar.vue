@@ -1,12 +1,19 @@
 <template>
   <div>
     <md-toolbar>
-        <md-button class="md-icon-button" @click.native="toggleLeftSidenav">
-        <md-icon>menu</md-icon>
-        </md-button>
 
-    <h2 class="md-title">{{title}}</h2>
+      <md-button class="md-icon-button" @click.native="toggleLeftSidenav">
+        <md-icon>menu</md-icon>
+      </md-button>
+
+      <h2 class="md-title"  style="flex: 1">{{title}}</h2>
+
+      <md-button class="md-icon-button" style="">
+        <md-icon>more_vert</md-icon>
+      </md-button>
+      
     </md-toolbar>
+
     <md-sidenav class="md-left" ref="leftSidenav">
         <md-toolbar class="md-large">
         <div class="md-toolbar-container">
@@ -23,6 +30,7 @@
           <hr>
         </span>
     </md-sidenav>
+
   </div>
 </template>
 

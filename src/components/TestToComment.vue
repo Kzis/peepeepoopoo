@@ -15,6 +15,13 @@
 
         </div>
     </div>
+
+    <div class="row" style="margin:10px;">
+        <div class="col-sm-12" style="background-color:#cccccc; height:300px;">
+
+        </div>
+    </div>
+    
   </div>
 
 </template>
