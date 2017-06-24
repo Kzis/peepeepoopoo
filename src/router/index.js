@@ -5,6 +5,7 @@ import Router from 'vue-router'
 import AddToilet from '@/components/AddToilet'
 import SearchToilet from '@/components/SearchToilet'
 import Comment from '@/components/Comment'
+import Login from '@/components/Login'
 
 //firebase config
 import { auth } from '../configs/firebase';
@@ -28,5 +29,10 @@ export default new Router({
       name: 'Comment',
       component: Comment
     },
+    {
+      path: '/log-in',
+      name: 'Login',
+      component: Login
+    }
   ]
 })
