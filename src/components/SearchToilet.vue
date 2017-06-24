@@ -1,7 +1,7 @@
 <template>
 
   <div class="seaech-googlemap">
-
+<div id="snackbar">ไม่สามารถระบุตำแหน่งของคุณได้</div>
   <div class="hello">
     <md-button class="md-icon-button md-raised md-primary background-grey btn-location" @click="locationNew">
       <md-icon>room</md-icon>
@@ -125,18 +125,10 @@ export default {
         function success(pos) {
           var crd = pos.coords;
           //var point = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-          console.log('Your current position is:');
-          console.log(`Latitude : ${crd.latitude}`);
-          console.log(`Longitude: ${crd.longitude}`);
-          console.log(`More or less ${crd.accuracy} meters.`);
-          console.log(`Latitude : ${self.center.lat}`);
-          console.log(`Longitude : ${self.center.lng}`);
           if(first){
             if(self.center.lat === crd.latitude && self.center.lng === crd.longitude){
-              console.log("equal positon");
               self.center = {lat: crd.latitude + 10.0, lng: crd.longitude + 10.0}
             }else{
-              console.log("not equal positon");
               self.center = {lat: crd.latitude, lng: crd.longitude};
             }
             
@@ -151,17 +143,22 @@ export default {
         }
         function error(err) {
           console.warn(`ERROR(${err.code}): ${err.message}`);
+          clearInterval(self.intevalIdGeolocation);
+          // Get the snackbar DIV
+          var x = document.getElementById("snackbar")
+
+          // Add the "show" class to DIV
+          x.className = "show";
+
+          // After 3 seconds, remove the show class from DIV
+          setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
         }
         navigator.geolocation.getCurrentPosition(success, error, options);
         self.intevalIdGeolocation = setInterval(function(){ 
+          console.log("geo loop");
           navigator.geolocation.getCurrentPosition(success, error, options);
         }, 10000);
       }
-      //this.center = {lat: 5.0, lng: 5.0};
-    },
-    changeLocation : function() {
-      var self = this;
-      self.center = {lat: 11.0, lng: 10.0};
     }
   }
 }
@@ -177,5 +174,52 @@ export default {
     margin: 6px;
     z-index: 1;
  }
+
+ /* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 100; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+    visibility: visible; /* Show the snackbar */
+
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
 </style>
 
