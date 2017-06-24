@@ -27,7 +27,7 @@
     methods : {
         test : function(){
 
-            this.$router.push('comment/'+ "123" )
+            this.$router.push('comment/'+ "-KnNlNJghqWLhMem91nh" )
 
             // this.$router.push({ path: 'comment', params: { userId: 123 }})
 

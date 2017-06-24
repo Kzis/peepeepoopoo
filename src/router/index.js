@@ -35,6 +35,7 @@ export default new Router({
       name: 'TestToComment',
       component: TestToComment
     },
+    {
       path: '/log-in',
       name: 'Login',
       component: Login
