@@ -12,10 +12,22 @@
           <label>{{poo.x_location}}</label> &nbsp;&nbsp;
           <label>{{poo.y_location}}</label> &nbsp;&nbsp;
 
-         <md-input-container>
-          <label>Location Name</label>
+        <md-input-container>
+          <md-icon>location_city</md-icon>
+          <label>Place name</label>
+          <md-textarea readonly="true" v-model="poo.place_name"></md-textarea>
+        </md-input-container>
 
-          <md-input maxlength="20" v-model="poo.place_name"></md-input>
+        <md-input-container>
+          <md-icon>attach_money</md-icon>
+          <label>Price</label>
+          <md-textarea readonly="true" v-model="poo.price"></md-textarea>
+        </md-input-container>
+
+        <md-input-container>
+          <md-icon>insert_comment</md-icon>
+          <label>Description</label>
+          <md-textarea readonly="true" v-model="poo.description"></md-textarea>
         </md-input-container>
 
         </div>
