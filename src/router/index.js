@@ -5,7 +5,11 @@ import Router from 'vue-router'
 import AddToilet from '@/components/AddToilet'
 import SearchToilet from '@/components/SearchToilet'
 import Comment from '@/components/Comment'
+import TestToComment from '@/components/TestToComment'
+import Login from '@/components/Login'
 
+//firebase config
+import { auth } from '../configs/firebase';
 
 Vue.use(Router)
 
@@ -22,9 +26,19 @@ export default new Router({
       component: AddToilet
     },  
     {
-      path: '/comment',
+      path: '/comment/:userId',
       name: 'Comment',
       component: Comment
     },
+    {
+      path: '/test-comment',
+      name: 'TestToComment',
+      component: TestToComment
+    },
+    {
+      path: '/log-in',
+      name: 'Login',
+      component: Login
+    }
   ]
 })
