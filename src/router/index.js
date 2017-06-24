@@ -19,14 +19,14 @@ export default new Router({
       path: '/',
       name: 'SearchToilet',
       component: SearchToilet,
-      beforeEnter: (to, from, next) => {
-        if (!auth.currentUser) {
-          next('/log-in');
-        }
+    //   beforeEnter: (to, from, next) => {
+    //     if (!auth.currentUser) {
+    //       next('/log-in');
+    //     }
 
-        next();
+    //     next();
 
-      }
+    //   }
     },
     {
       path: '/add-toilet',
