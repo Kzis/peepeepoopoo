@@ -6,6 +6,8 @@ import AddToilet from '@/components/AddToilet'
 import SearchToilet from '@/components/SearchToilet'
 import Comment from '@/components/Comment'
 
+//firebase config
+import { auth } from '../configs/firebase';
 
 Vue.use(Router)
 
