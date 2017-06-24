@@ -35,7 +35,8 @@ export default {
       routes: [
         { to: '/', title: 'Search' },
         { to: '/add-toilet', title: 'Add' },
-        { to: '/comment', title: 'Comment' }
+        { to: '/comment', title: 'Comment' },
+        { to: '/test-comment', title: 'TestToComment' }
       ]
     }
   },

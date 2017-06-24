@@ -3,14 +3,19 @@
   <div class="seaech-googlemap" style="height:100%;">
 
     <div class="row" style="margin:10px;">
-        <div class="col-sm-12" style="background-color:#cccccc; height:300px;">
-           DIV 1
+        <div class="col-sm-12" style="border: 2px solid #73AD21; height:300px;">
+         
+         <md-input-container>
+          <label>Location Name</label>
+          <md-input maxlength="20"></md-input>
+        </md-input-container>
+
         </div>
     </div>
 
-    <div class="row" style="margin:10px;">
-        <div class="col-sm-12" style="background-color:#cccccc; height: 300px;"> 
-             <div class="fb-comments" :data-href="'https://peepeepoopoo-37225.firebaseapp.com/#/' + xxx" data-width="560" data-numposts="5"></div>
+    <div class="row" style="margin:10px;" > 
+        <div class="col-sm-12" style="border: 2px solid #73AD21; height: 300px;"> 
+             <div id="fb-1" class="fb-comments" :data-href="'https://peepeepoopoo-37225.firebaseapp.com/#/' + userId" data-width="560" data-numposts="5"></div>
              <div class="fb-comments" :data-href="'https://peepeepoopoo-37225.firebaseapp.com/#/' + yyy" data-width="560" data-numposts="5"></div>
         </div>
     </div>
@@ -24,18 +29,17 @@
     name: 'comment',
     data () {
       return {
-        xxx : "111",
+        userId : null,
         yyy : "222",
+        test: 0,
       }
     },
     created: function() {
-        (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v2.9";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+      //Set Id from add
+      this.userId = this.$route.params.userId;
+      },
+      mounted: function() {
+        ///TODO
       }
   }
 
