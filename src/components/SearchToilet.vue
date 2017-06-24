@@ -126,7 +126,7 @@ export default {
       toilet_markers : [],
       toilet_detail : {},
       successMsg: "Your action was successfully executed.",
-      user : auth.currentUser
+      user : auth.currentUser || {}
     }
   },
   methods: {
