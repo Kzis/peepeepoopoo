@@ -3,29 +3,33 @@
   <div class="seaech-googlemap" style="height:100%;">
 
     <div class="row" style="margin:10px;">
-        <div class="col-sm-12" style="border: 2px solid #73AD21; height:300px;">
+        <div class="col-sm-12" style="border: 2px solid #3f51b5; height:300px;">
          
-          <label>{{poo.creater_user}}</label> &nbsp;&nbsp;
-          <label>{{poo.description}}</label> &nbsp;&nbsp;
-          <label>{{poo.place_name}}</label> &nbsp;&nbsp;
-          <label>{{poo.price}}</label> &nbsp;&nbsp;
-          <label>{{poo.x_location}}</label> &nbsp;&nbsp;
-          <label>{{poo.y_location}}</label> &nbsp;&nbsp;
+        <h2>Toliet description</h2>
 
-         <md-input-container>
-          <label>Location Name</label>
+        <md-input-container>
+          <md-icon>location_city</md-icon>
+          <label>Place name</label>
+          <md-textarea :readonly="true" v-model="poo.place_name"></md-textarea>
+        </md-input-container>
 
-          <md-input maxlength="20" v-model="poo.place_name"></md-input>
+        <md-input-container>
+          <md-icon>attach_money</md-icon>
+          <label>Price</label>
+          <md-textarea :readonly="true" v-model="poo.price"></md-textarea>
+        </md-input-container>
+
+        <md-input-container>
+          <md-icon>insert_comment</md-icon>
+          <label>Description</label>
+          <md-textarea :readonly="true" v-model="poo.description"></md-textarea>
         </md-input-container>
 
         </div>
     </div>
 
     <div class="row" style="margin:10px;" > 
-        <div class="col-sm-12" style="border: 2px solid #73AD21; height: 300px;"> 
-             <div id="fb-1" class="fb-comments" :data-href="'https://peepeepoopoo-37225.firebaseapp.com/#/' + userId" data-width="560" data-numposts="5"></div>
-             <div class="fb-comments" :data-href="'https://peepeepoopoo-37225.firebaseapp.com/#/' + yyy" data-width="560" data-numposts="5"></div>
-        </div>
+      <div id="fb-1" style="border: 2px solid #73AD21;" class="fb-comments" :data-href="'https://peepeepoopoo-37225.firebaseapp.com/#/' + userId" data-width="560" data-numposts="5"></div>
     </div>
 
   </div>
@@ -41,8 +45,6 @@ import { db } from './../configs/firebase.js'
     data () {
       return {
         userId : null,
-        yyy : "222",
-        test: 0,
         poo: {
           creater_user : null,
           description : null,

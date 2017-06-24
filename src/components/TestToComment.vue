@@ -9,6 +9,10 @@
             <md-icon>add</md-icon>
         </md-button>
 
+        <md-button class="md-fab" @click="test2()">
+            <md-icon>add</md-icon>
+        </md-button>
+
         </div>
     </div>
   </div>
@@ -26,11 +30,10 @@
     },
     methods : {
         test : function(){
-
-            this.$router.push('comment/'+ "-KnNlNJghqWLhMem91nh" )
-
-            // this.$router.push({ path: 'comment', params: { userId: 123 }})
-
+            this.$router.push('comment/'+ "-KnNlNJghqWLhMem91nh" )        
+        },
+        test2 : function(){
+           this.$router.push('comment/'+ "-KnNlY_R43jWHMSsfJcz" )     
         }
     }
 
