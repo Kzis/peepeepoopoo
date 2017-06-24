@@ -69,7 +69,7 @@
         </md-card-header>
 
         <md-card-actions>
-          <md-button>Logout</md-button>
+          <md-button @click.native="logOut">Logout</md-button>
         </md-card-actions>
       </md-card>
     </div>
@@ -91,7 +91,7 @@ export default {
       user: auth.currentUser,
       provider: provider,
       images: Images,
-      isLogin: false
+      isLogin: false,
     }
   },
   created:function() {
