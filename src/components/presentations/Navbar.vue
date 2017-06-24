@@ -17,7 +17,8 @@
     <md-sidenav class="md-left" ref="leftSidenav">
         <md-toolbar class="md-large">
         <div class="md-toolbar-container">
-            <h3 class="md-title">{{title}}</h3>
+            <h3 class="md-title">{{title}}</h3><br>
+            <img :src="images.LOGO_NAVBAR" style="padding-left:5%; height=48px; width=48px;" alt="Pee Pee Poo Poo">
         </div>
         </md-toolbar>
         <!--all link to page-->
@@ -35,18 +36,22 @@
 </template>
 
 <script>
+
+import Images from '../../configs/images.js';
+
 export default {
   name: 'navbar',
   data: function() {
     return {
-      title: 'Pee Pee Poo Poo EiEi',
+      title: 'Pee Pee Poo Poo',
       routes: [
         { to: '/', title: 'Search' },
         { to: '/add-toilet', title: 'Add' },
         { to: '/comment', title: 'Comment' },
         { to: '/test-comment', title: 'TestToComment' },
         { to: '/log-in', title: 'Log-in' }
-      ]
+      ],
+      images: Images
     }
   },
   methods: {

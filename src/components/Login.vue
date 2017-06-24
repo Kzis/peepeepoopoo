@@ -5,13 +5,19 @@
       <div class="content">
         <!--Echo out errors here. See example-->
         <!--<p class=error>Error, wrong username or password used. Please, try again.-->
-        <div style="flex:1;"></div>
-           <md-button style="width:90%; align-self:center; display:flex; justify-content:space-between; align-items:center;" class="md-raised md-primary" @click.native="logIn">
-            <div class="block-in-button ">
-              <img class="icon" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/facebook.svg" >
-              <label class="text-in-btn">Sign in with Facebook</label>
-            </div>
-          </md-button>
+
+        <div class="title"><h1>Login</h1></div>
+
+        <div style="height:200px;"><img :src="images.LOGO_LARGE" style="padding-left:23%;" alt="Pee Pee Poo Poo"></div>
+
+        <div style="flex:1; "></div>
+
+        <md-button style="width:90%; margin-top:10%; align-self:center; display:flex; justify-content:space-between; align-items:center;" class="md-raised md-primary" @click.native="logIn">
+          <div class="block-in-button ">
+            <img style="padding-bottom:5px;" class="icon" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/facebook.svg" >
+            <label class="text-in-btn">Sign in with Facebook</label>
+          </div>
+        </md-button>
 
       </div>
 
@@ -55,7 +61,7 @@
 
 
     <!-- CARD UI-->
-    <!--<div style="position:absolute; top:20px; left: 1%;">
+    <div style="position:absolute; top:20px; left: 1%;">
      <md-card>
         <md-card-header>
           <md-card-header-text>
@@ -69,10 +75,10 @@
         </md-card-header>
 
         <md-card-actions>
-          <md-button>Logout</md-button>
+          <md-button @click.native="logOut">Logout</md-button>
         </md-card-actions>
       </md-card>
-    </div>-->
+    </div>
      
     
   </div>
@@ -90,7 +96,8 @@ export default {
     return {
       user: auth.currentUser,
       provider: provider,
-      images: Images
+      images: Images,
+      isLogin: false,
     }
   },
   created:function() {
@@ -123,6 +130,10 @@ export default {
         });
     },
 
+    showModal:function() {
+      // let
+    },
+
     logOut: function() {
       auth.signOut().then(() => {
         //handler case log-out success
@@ -146,8 +157,8 @@ export default {
   .icon {
     border: none;
     display: inline-block;
-    height: 18px;
-    width: 18px;
+    height: 25;
+    width: 25px;
   }
 
   .text-in-btn {
@@ -161,6 +172,19 @@ export default {
 
   .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+  .title {
+	text-align: center;
+  background-color: #3f51b5;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+	color: #ddd;
+	font-size: 55px;
+	text-transform: uppercase;
+	text-shadow: -2px 0px 5px 0px rgba(0,0,0,0.4);
+	margin: 0 0 10px;
+	padding: 0;
   }
 
   @import url(https://fonts.googleapis.com/css?family=Roboto:300);
@@ -191,7 +215,7 @@ export default {
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     width: 90%;
-    height: 300px;
+    height: 250px;
     z-index: 2;
     flex-direction: column;
     justify-content: center;
@@ -228,17 +252,6 @@ export default {
 
   input:focus {
     border-bottom: 1px solid #2196f3;
-  }
-
-  /*Labels*/
-  label {
-    color: #9E9E9E;
-    font-size: 16px;
-    pointer-events: none;
-    position: absolute;
-    top: 10px;
-    -webkit-transition: 0.2s ease all;
-    transition: 0.2s ease all;
   }
 
   input:focus ~ label, input:valid ~ label {
