@@ -21,6 +21,7 @@ Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyBfKA94ZnVcppyzxqGeLYZAj4_k8IRSvTQ',
     v: '3.26',  // Google Maps API version 
+    libraries: 'places'
   }
 })
 
