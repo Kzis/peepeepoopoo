@@ -22,6 +22,8 @@
           console.log("=========> registration   <==============++====")
           console.log(registration)
           console.log("=========> registration   <==============++====")
+          console.log("=========> registration   <==============++====")
+          console.log("=========> registration   <==============++====")
           
           
           registration.active = function() {
