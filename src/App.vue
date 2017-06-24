@@ -15,9 +15,6 @@ import { db } from './configs/firebase.js'
 
 export default {
   name: 'app',
-  firebase: {
-    //connenct real-time database here
-  },
   components: {
     Navbar
   }
