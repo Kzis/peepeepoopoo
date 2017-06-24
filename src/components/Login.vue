@@ -125,7 +125,7 @@ export default {
     },
 
     showModal:function() {
-      let
+      // let
     },
 
     logOut: function() {
