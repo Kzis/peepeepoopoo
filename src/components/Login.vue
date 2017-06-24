@@ -19,14 +19,6 @@
           </div>
         </md-button>
 
-        <div style="flex:1;"></div>
-           <md-button style="width:90%; align-self:center; display:flex; justify-content:space-between; align-items:center;" class="md-raised md-primary" @click.native="logIn">
-            <div class="block-in-button ">
-              <img class="icon" src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/facebook.svg" >
-              <label class="text-in-btn">Sign in with Facebook</label>
-            </div>
-          </md-button>
-
       </div>
 
 
