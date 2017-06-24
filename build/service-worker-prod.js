@@ -21,16 +21,17 @@
           // registration
           console.log("=========> registration   <==============++====")
           console.log(registration)
+          caches.keys().then((key) => { console.log(keys) })
           console.log("=========> registration   <==============++====")
           console.log("=========> registration   <==============++====")
           console.log("=========> registration   <==============++====")
           
           
-          registration.active = function() {
-            // console.log()
-            console.log(registration)
-            caches.keys().then((key) => { console.log(keys) })
-          }
+          // registration.active = function() {
+          //   // console.log()
+          //   console.log(registration)
+          //   caches.keys().then((key) => { console.log(keys) })
+          // }
           // updatefound is fired if service-worker.js changes.
           registration.onupdatefound = function() {
             // updatefound is also fired the very first time the SW is installed,
