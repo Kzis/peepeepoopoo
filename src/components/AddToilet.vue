@@ -37,6 +37,19 @@
 
 		<md-button class="md-raised md-primary" @click="addItem">Add item</md-button>
 
+	  <md-dialog-alert
+	  	md-title="Success!"
+		  md-content="Your marker has been saved."
+		  md-ok-text="Ok!"
+		  @close="onClose"
+		  ref="successDialog">
+		</md-dialog-alert>  
+		<md-dialog-alert
+	  	md-title="Error!"
+		  :md-content="saveError"
+		  md-ok-text="Ok"
+		  ref="errorDialog">
+		</md-dialog-alert>
   </div>
 </template>
 
@@ -53,13 +66,13 @@ export default {
   },
   data () {
     return {
-      description: 'Singapore',
+      description: 'Bangkok',
     	toilet_markers : [],
-			mapCenter: { lat: 13.789, lng: 100.588 },
+			mapCenter: { lat: 13.7563309, lng: 100.50176510000006 },
 			newMarker : {        
 				position: {
-          lat:  13.789,
-          lng:   100.588
+          lat:  13.7563309,
+          lng:  100.50176510000006
         },
       },
       placeName: '',
@@ -78,7 +91,6 @@ export default {
       };
     },
     addItem () {
-    	console.log(this.$firebaseRefs)
       this.$firebaseRefs.toilet_markers.push({
       	'place_name': this.placeName,
         'x_location': this.mapCenter.lat,
@@ -86,7 +98,18 @@ export default {
         'price': this.price,
         'description': this.desc,
         'create_user': 99,
+      }, (err) => {
+      	if(err) {
+      		console.log("error :",err)
+      		this.saveError = err
+	      	this.$refs['errorDialog'].open()
+      		return
+      	}
+      	this.$refs['successDialog'].open()
       })
+    },
+    onClose(type) {
+    	this.$router.push('/')
     },
     updateCenter (newCenter) {
 	    this.mapCenter = {
@@ -102,7 +125,7 @@ export default {
 
 <style scoped>
 .md-toolbar {
-	background-color: #6172ea
+	background-color: #6770dc
 }
 .md-input-container>input {
 	font-size: 14px !important
