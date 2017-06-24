@@ -43,20 +43,13 @@
 		  md-ok-text="Ok!"
 		  @close="onClose"
 		  ref="successDialog">
-		</md-dialog-alert>  
-		<md-dialog-alert
-	  	md-title="Error!"
-		  :md-content="saveError"
-		  md-ok-text="Ok"
-		  ref="errorDialog">
-		</md-dialog-alert>
+		</md-dialog-alert> 
   </div>
 </template>
 
 <script>
 
-import { db } from './../configs/firebase.js'
-
+import {  auth, db } from './../configs/firebase.js'
 export default {
   name: 'add-toilet',
 	firebase: {
@@ -77,7 +70,8 @@ export default {
       },
       placeName: '',
 			price: 'FREE',
-			desc: ''
+			desc: '',
+			saveError : {}
     }
   },
   methods: {
@@ -97,12 +91,11 @@ export default {
         'y_location': this.mapCenter.lng,
         'price': this.price,
         'description': this.desc,
-        'create_user': 99,
+        'creater_name': auth.currentUser.displayName,
+        'creater_id' : auth.currentUser.uid,
       }, (err) => {
       	if(err) {
       		console.log("error :",err)
-      		this.saveError = err
-	      	this.$refs['errorDialog'].open()
       		return
       	}
       	this.$refs['successDialog'].open()
