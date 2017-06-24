@@ -4,13 +4,13 @@
   <div class="hello">
     <gmap-map
       :center="center"
-      :zoom="7"
+      :zoom="11"
       style="width: 100%; height: 300px"
     >
       <gmap-marker
         :key="index"
-         v-for="(m, index) in markers"
-        :position="m.position"
+         v-for="(m, index) in toilet_markers"
+        :position="{lat:Number(m.x_location), lng:Number(m.y_location)}"
         :icon="m.icon"
         :clickable="true"
       ></gmap-marker>
@@ -24,18 +24,18 @@
 
 <script>
 import svg from '../configs/svg.js'
+import { db } from './../configs/firebase.js'
 export default {
-  name: 'search-toilet',
+  name: 'search-toilet',  
+  firebase: {
+    toilet_markers : {
+      source: db.ref('toilet_markers')
+    },
+  },
   data () {
     return {
-      center: {lat: 11.0, lng: 10.0},
-      markers: [{
-        position: {lat: 10.0, lng: 10.0},
-        icon: svg.TOILET
-      }, {
-        position: {lat: 11.0, lng: 11.0},
-        icon: svg.TOILET,
-      }]
+      center: {lat: 13.789, lng: 100.5880},
+      toilet_markers : []
     }
   },
   methods: {
