@@ -6,6 +6,7 @@ import AddToilet from '@/components/AddToilet'
 import SearchToilet from '@/components/SearchToilet'
 import Comment from '@/components/Comment'
 import TestToComment from '@/components/TestToComment'
+import Login from '@/components/Login'
 
 //firebase config
 import { auth } from '../configs/firebase';
@@ -34,5 +35,9 @@ export default new Router({
       name: 'TestToComment',
       component: TestToComment
     },
+      path: '/log-in',
+      name: 'Login',
+      component: Login
+    }
   ]
 })
