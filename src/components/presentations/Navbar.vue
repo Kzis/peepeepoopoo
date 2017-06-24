@@ -36,6 +36,7 @@ export default {
         { to: '/', title: 'Search' },
         { to: '/add-toilet', title: 'Add' },
         { to: '/comment', title: 'Comment' },
+        { to: '/test-comment', title: 'TestToComment' },
         { to: '/log-in', title: 'Log-in' }
       ]
     }
