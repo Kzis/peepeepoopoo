@@ -13,3 +13,7 @@
 .md-theme-default a:not(.md-button):visited {
     color: #3f51b5;
 }
+
+.md-toolbar.md-large {
+    min-height: 100px !important;
+}
