@@ -2,36 +2,49 @@
 
   <div class="seaech-googlemap" style="height:100%;">
 
-    <div class="row" style="margin:10px;">
-        <div class="col-sm-12" style="border: 2px solid #3f51b5; height:300px;">
+    <div class="row" style="margin:10px; padding:0px 10%">
+
+        <div class="col-sm-12 card"  style="border: 2px solid #3f51b5; height:300px; width:80vw;">
          
-        <h2>Toliet description</h2>
+        <h2 align="center">Toliet Description</h2>
 
-        <md-input-container>
-          <md-icon>location_city</md-icon>
-          <label>Place name</label>
-          <md-textarea :readonly="true" v-model="poo.place_name"></md-textarea>
-        </md-input-container>
+        <div class= "col-lg-offset-3 col-lg-8">
+          <md-input-container style="width:80%;">
+            <md-icon>location_city</md-icon>
+            <label>Place name</label>
+            <md-textarea :readonly="true" v-model="poo.place_name"></md-textarea>
+          </md-input-container>
+        </div>
 
-        <md-input-container>
-          <md-icon>attach_money</md-icon>
-          <label>Price</label>
-          <md-textarea :readonly="true" v-model="poo.price"></md-textarea>
-        </md-input-container>
+        <div class= "col-lg-offset-3 col-lg-8">
+          <md-input-container style="width:80%;">
+            <md-icon>attach_money</md-icon>
+            <label>Price</label>
+            <md-textarea :readonly="true" v-model="poo.price"></md-textarea>
+          </md-input-container>
+        </div>
 
-        <md-input-container>
-          <md-icon>insert_comment</md-icon>
-          <label>Description</label>
-          <md-textarea :readonly="true" v-model="poo.description"></md-textarea>
-        </md-input-container>
+        <div class= "col-lg-offset-3 col-lg-8">
+          <md-input-container style="width:80%;">
+            <md-icon>insert_comment</md-icon>
+            <label>Description</label>
+            <md-textarea :readonly="true" v-model="poo.description"></md-textarea>
+          </md-input-container>
+        </div>
 
         </div>
     </div>
 
-    <div class="row" style="margin:10px;" > 
-      <div id="fb-1" style="border: 2px solid #73AD21;" class="fb-comments" :data-href="'https://peepeepoopoo-37225.firebaseapp.com/#/' + userId" data-width="560" data-numposts="5"></div>
+    <div class="row" style="margin:10px; padding:0px 10%">
+      <div class="col-sm-12 card"  style="margin:1px; border: 2px solid #3f51b5; width:80vw;">
+        <div id="fb-1" style="" class="fb-comments" :data-href="'https://peepeepoopoo-37225.firebaseapp.com/#/' + userId" data-width="100%" data-numposts="5"></div>
+      </div>
     </div>
 
+    <!--<div class="row card" style="margin:10px; padding:0px 10%" > -->
+      <!--<div id="fb-1" style="border: 2px solid #3f51b5;" class="fb-comments" :data-href="'https://peepeepoopoo-37225.firebaseapp.com/#/' + userId" data-width="860" data-numposts="5"></div>-->
+      <!--<div id="fb-1" style="border: 2px solid #73AD21;" class="fb-comments" :data-href="'https://peepeepoopoo-37225.firebaseapp.com/#/'" data-width="560" data-numposts="5"></div>-->
+    <!--</div>-->
   </div>
 
 </template>
@@ -55,6 +68,16 @@ import { db } from './../configs/firebase.js'
         }
       }
     },
+    beforeCreate: function() {
+      db.ref('comment_flag/').once('value', (snap) => {
+        let comment_flag = snap.val();
+
+        if (!comment_flag) {
+          db.ref('comment_flag/').set(true);
+          location.reload();
+        }
+      })
+    },
     created: function() {
       //Set Id from add
       this.userId = this.$route.params.userId;
@@ -67,6 +90,9 @@ import { db } from './../configs/firebase.js'
         console.log(this.poo) 
         })
    
+      },
+      beforeDestroy: function() {
+        db.ref('comment_flag/').set(false);
       }
   }
 
@@ -74,6 +100,15 @@ import { db } from './../configs/firebase.js'
 
 
 <style scoped>
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
 
 </style>
 
