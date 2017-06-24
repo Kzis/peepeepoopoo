@@ -2,6 +2,11 @@
   <div>
     <md-toolbar>
 	    <h1 class="md-title">Add New Restroom You Just Found!</h1>
+			<md-input-container >
+	      <gmap-autocomplete :value="description"
+	        @place_changed="setPlace">
+	      </gmap-autocomplete>
+      </md-input-container>
 		</md-toolbar>
 		<gmap-map :center="mapCenter" :zoom="12" style="width: 100%; height: 300px" @center_changed="updateCenter">
 	    <gmap-marker
@@ -48,6 +53,7 @@ export default {
   },
   data () {
     return {
+      description: 'Singapore',
     	toilet_markers : [],
 			mapCenter: { lat: 13.789, lng: 100.588 },
 			newMarker : {        
@@ -62,6 +68,15 @@ export default {
     }
   },
   methods: {
+  	setDescription(description) {
+      this.description = description;
+    },
+    setPlace(place) {
+      this.mapCenter = {
+        lat: place.geometry.location.lat(),
+        lng: place.geometry.location.lng(),
+      };
+    },
     addItem () {
     	console.log(this.$firebaseRefs)
       this.$firebaseRefs.toilet_markers.push({
@@ -88,5 +103,8 @@ export default {
 <style scoped>
 .md-toolbar {
 	background-color: #6172ea
+}
+.md-input-container>input {
+	font-size: 14px !important
 }
 </style>
