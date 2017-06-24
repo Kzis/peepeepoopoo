@@ -82,8 +82,11 @@
                   <md-button class="md-raised md-primary" @click="editItem(item)">Save</md-button>
                 </form>
               </md-tab>
+              <md-tab md-icon="delete" >
+                <h3>Make sure you really want to delete this!</h3>
+                <md-button class="md-raised md-warn" @click="deleteItem(item)">Delete!</md-button>
+              </md-tab>
             </md-tabs>
-            
           </md-list-expand>
         </md-list-item>
       </template>
@@ -92,7 +95,7 @@
 
   <md-dialog-alert
     md-title="Success!"
-    md-content="Your marker has been saved."
+    :md-content="successMsg"
     md-ok-text="Ok!"
     @close="onClose"
     ref="successDialog">
@@ -121,12 +124,14 @@ export default {
       intevalIdGeolocation : undefined,
       toilet_icon : svg.TOILET,
       toilet_markers : [],
-      toilet_detail : {}
+      toilet_detail : {},
+      successMsg: "Your action was successfully executed."
     }
   },
   methods: {
     seeObj : function(item){
       console.log(item)
+
     },
     setCenter : function(pos) {
       this.center = pos
@@ -134,16 +139,28 @@ export default {
     showInfoCard : function(index){
       this.toilet_markers[index].showinfocard = true
       this.setCenter({lat:this.toilet_markers[index].x_location, lng : this.toilet_markers[index].y_location})
-      console.log(index, this.toilet_markers[index].showinfocard)
+        console.log( this.$firebaseRefs.toilet_markers['get database'] )
+
     },
     editItem : function(item) {
-      const childKey = item['.key'];
-      delete item['.key'];
+      const childKey = item['.key']
+      delete item['.key']
       this.$firebaseRefs.toilet_markers.child(childKey).set(item, (err) => {
         if(err) {
           console.log("error :",err) 
           return
         }
+        this.$refs['successDialog'].open()
+      })
+    },
+    deleteItem : function(item) {
+      const childKey = item['.key']
+      this.$firebaseRefs.toilet_markers.child(childKey).remove((err) => {
+        if(err) {
+          console.log("error :",err) 
+          return
+        }
+        this.successMsg = "Your marker was deleted."
         this.$refs['successDialog'].open()
       })
     },
