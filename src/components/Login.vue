@@ -96,6 +96,9 @@ export default {
           let email = user.email;
           let photoUrl = user.photoURL;
           let uid = user.uid;
+          this.$session.start()
+          this.$session.set('uid', user.uid)
+          this.$session.set('displayName', user.displayName)
 
           db.ref('users/' + uid).set({
             name: name,

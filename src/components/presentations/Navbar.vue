@@ -93,6 +93,7 @@ export default {
     logOut: function() {
       auth.signOut().then(() => {
         //handler case log-out success
+        this.$session.destroy()
         console.log('log out success');
       }).catch(function(error) {
         //handler case log-out not success

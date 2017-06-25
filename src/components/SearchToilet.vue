@@ -109,6 +109,7 @@ import svg from '../configs/svg.js'
 import { auth, db } from './../configs/firebase.js'
 export default {
   name: 'search-toilet',  
+
   firebase: {
     toilet_markers : {
       source: db.ref('toilet_markers')
@@ -116,6 +117,10 @@ export default {
   },
   data () {
     return {
+      user : { 
+        uid : this.$session.get('uid'),
+        displayName : this.$session.get('displayName')
+      },
       center: {lat: 13.789, lng: 100.5880},
       makerMe : {
         icon: svg.positionMe
@@ -126,12 +131,12 @@ export default {
       toilet_markers : [],
       toilet_detail : {},
       successMsg: "Your action was successfully executed.",
-      user : auth.currentUser || {}
+
     }
   },
   methods: {
     seeObj : function(item){
-      console.log(item)
+      // console.log(item)
 
     },
     setCenter : function(pos) {
@@ -140,7 +145,7 @@ export default {
     showInfoCard : function(index){
       this.toilet_markers[index].showinfocard = true
       this.setCenter({lat:this.toilet_markers[index].x_location, lng : this.toilet_markers[index].y_location})
-        console.log( this.$firebaseRefs.toilet_markers['get database'] )
+        // console.log( this.$firebaseRefs.toilet_markers['get database'] )
 
     },
     editItem : function(item) {
@@ -173,7 +178,7 @@ export default {
         var first = true;
         if(self.intevalIdGeolocation){
           clearInterval(self.intevalIdGeolocation);
-          console.log("clear interval");
+          // console.log("clear interval");
         }
 
       if(navigator.geolocation) {
@@ -215,7 +220,7 @@ export default {
         }
         navigator.geolocation.getCurrentPosition(success, error, options);
         self.intevalIdGeolocation = setInterval(function(){ 
-          console.log("geo loop");
+          // console.log("geo loop");
           navigator.geolocation.getCurrentPosition(success, error, options);
         }, 10000);
       }
