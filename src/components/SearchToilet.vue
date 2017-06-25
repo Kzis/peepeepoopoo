@@ -156,6 +156,7 @@ export default {
           console.log("error :",err) 
           return
         }
+        this.successMsg = "Your marker was updated."
         this.$refs['successDialog'].open()
       })
     },
