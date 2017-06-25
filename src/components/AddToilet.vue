@@ -59,6 +59,10 @@ export default {
   },
   data () {
     return {
+    	user : { 
+        uid : this.$session.get('uid'),
+        displayName : this.$session.get('displayName')
+      },
       description: 'Bangkok',
     	toilet_markers : [],
 			mapCenter: { lat: 13.7563309, lng: 100.50176510000006 },

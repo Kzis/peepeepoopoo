@@ -11,6 +11,7 @@ import router from './router'
 import VueMaterial from 'vue-material'
 import VueFire from 'vuefire'
 import * as VueGoogleMaps from 'vue2-google-maps';
+import VueSession from 'vue-session'
 
 //include vue-material plug-in
 Vue.use(VueMaterial)
@@ -24,6 +25,8 @@ Vue.use(VueGoogleMaps, {
     libraries: 'places'
   }
 })
+
+Vue.use(VueSession)
 
 Vue.config.productionTip = false
 

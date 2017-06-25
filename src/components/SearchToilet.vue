@@ -109,6 +109,7 @@ import svg from '../configs/svg.js'
 import { auth, db } from './../configs/firebase.js'
 export default {
   name: 'search-toilet',  
+
   firebase: {
     toilet_markers : {
       source: db.ref('toilet_markers')
@@ -116,6 +117,10 @@ export default {
   },
   data () {
     return {
+      user : { 
+        uid : this.$session.get('uid'),
+        displayName : this.$session.get('displayName')
+      },
       center: {lat: 13.789, lng: 100.5880},
       makerMe : {
         icon: svg.positionMe
@@ -126,7 +131,7 @@ export default {
       toilet_markers : [],
       toilet_detail : {},
       successMsg: "Your action was successfully executed.",
-      user : auth.currentUser || {}
+
     }
   },
   methods: {
