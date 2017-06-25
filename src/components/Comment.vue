@@ -68,10 +68,12 @@ import { db } from './../configs/firebase.js'
     },
     beforeCreate: function() {
    
-      let comment_flag = localStorage.getItem("comment_flag");
-
-        if (!comment_flag) {
+      let x = localStorage.getItem("comment_flag");
+       
+        if(!x || x == "false"){
+   
           localStorage.setItem("comment_flag", true);
+
           location.reload();
         }
     },
@@ -84,12 +86,13 @@ import { db } from './../configs/firebase.js'
         //SELECT * FROM toilet_markers WHERE key = 'usserId' 
         db.ref('toilet_markers/' + this.userId).once('value', (snap) => {
         this.poo = snap.val()
-        console.log(this.poo);
+        // console.log(this.poo);
         })
    
       },
       beforeDestroy: function() {
-         localStorage.setItem("comment_flag", false);
+        //  localStorage.setItem("comment_flag", false);
+        localStorage.removeItem("comment_flag");
       }
   }
 

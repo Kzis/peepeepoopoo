@@ -27,7 +27,7 @@ Vue.use(VueGoogleMaps, {
 })
 
 //Set flag comment
-localStorage.setItem("comment_flag", false);
+// localStorage.setItem("comment_flag", false);
 
 Vue.use(VueSession)
 
