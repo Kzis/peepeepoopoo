@@ -18,16 +18,19 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: '',
+      redirect: function() {
+        // if (!auth.currentUser) {
+        return '/log-in'
+        // }
+
+        // return '/search'
+      }
+    },
+    {
+      path: '/search',
       name: 'SearchToilet',
       component: SearchToilet,
-    //   beforeEnter: (to, from, next) => {
-    //     if (!auth.currentUser) {
-    //       next('/log-in');
-    //     }
-
-    //     next();
-
-    //   }
     },
     {
       path: '/add-toilet',

@@ -66,7 +66,7 @@ export default {
     return {
       title: 'Pee Pee Poo Poo',
       routes: [
-        { to: '/', title: 'Search' },
+        { to: '/search', title: 'Search' },
         { to: '/add-toilet', title: 'Add' }
         // { to: '/comment', title: 'Comment' },
         // { to: '/test-comment', title: 'TestToComment' },

@@ -106,7 +106,7 @@ export default {
       })
     },
     onClose(type) {
-    	this.$router.push('/')
+    	this.$router.push('/search')
     },
     updateCenter (newCenter) {
 	    this.mapCenter = {

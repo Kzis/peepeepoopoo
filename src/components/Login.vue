@@ -80,9 +80,9 @@ export default {
       isLogin: false,
     }
   },
-  created:function() {
-      console.log(this.$router.push(''))
-  },
+  // created:function() {
+  //     console.log(this.$router.push(''))
+  // },
   methods: {
     logIn: function() {
       //log in with popup
@@ -105,7 +105,7 @@ export default {
             email: email,
             photoUrl: photoUrl
           });
-          this.$router.replace('/');
+          this.$router.replace('/search');
         }).catch(function(error) {
           //handler case log-in not success
           console.log("error: ", error)
