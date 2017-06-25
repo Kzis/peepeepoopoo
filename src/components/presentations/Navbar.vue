@@ -51,6 +51,7 @@
         </md-card-actions>
       </md-card>
     </div>
+    
   </div>
 </template>
 
@@ -59,14 +60,13 @@
 import Images from '../../configs/images.js';
 import { auth } from '../../configs/firebase.js';
 
-console.log( auth.currentUser)
 export default {
   name: 'navbar',
   data: function() {
     return {
       title: 'Pee Pee Poo Poo',
       routes: [
-        { to: '/', title: 'Search' },
+        { to: '/search', title: 'Search' },
         { to: '/add-toilet', title: 'Add' }
         // { to: '/comment', title: 'Comment' },
         // { to: '/test-comment', title: 'TestToComment' },

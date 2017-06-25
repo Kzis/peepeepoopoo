@@ -171,7 +171,7 @@ export default {
       })
     },
     onClose(type) {
-      this.$router.push('/')
+      this.$router.push('/search')
     },
     locationNew : function() {
         var self = this;
