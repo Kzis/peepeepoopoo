@@ -34,6 +34,7 @@ export default new Router({
       name: 'AddToilet',
       component: AddToilet,
       beforeEnter: (to, from, next) => {
+        console.log("add", auth)
         if (!auth.currentUser) {
           next('/log-in');
         }
