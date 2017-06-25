@@ -19,19 +19,6 @@
         navigator.serviceWorker.register('service-worker.js')
         .then(function(registration) {
           // registration
-          console.log("=========> registration   <==============++====")
-          console.log(registration)
-          caches.keys().then((key) => { console.log(keys) })
-          console.log("=========> registration   <==============++====")
-          console.log("=========> registration   <==============++====")
-          console.log("=========> registration   <==============++====")
-          
-          
-          // registration.active = function() {
-          //   // console.log()
-          //   console.log(registration)
-          //   caches.keys().then((key) => { console.log(keys) })
-          // }
           // updatefound is fired if service-worker.js changes.
           registration.onupdatefound = function() {
             // updatefound is also fired the very first time the SW is installed,
@@ -45,6 +32,7 @@
               installingWorker.onstatechange = function() {
                 switch (installingWorker.state) {
                   case 'installed':
+                  alert("New content is available; please refresh.")
                     // At this point, the old content will have been purged and the
                     // fresh content will have been added to the cache.
                     // It's the perfect time to display a "New content is
