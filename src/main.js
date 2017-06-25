@@ -26,6 +26,9 @@ Vue.use(VueGoogleMaps, {
   }
 })
 
+//Set flag comment
+localStorage.setItem("comment_flag", false);
+
 Vue.use(VueSession)
 
 Vue.config.productionTip = false

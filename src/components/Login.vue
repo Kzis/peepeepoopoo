@@ -105,6 +105,7 @@ export default {
             email: email,
             photoUrl: photoUrl
           });
+
           this.$router.replace('/search');
         }).catch(function(error) {
           //handler case log-in not success

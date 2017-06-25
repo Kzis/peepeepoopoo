@@ -41,10 +41,6 @@
       </div>
     </div>
 
-    <!--<div class="row card" style="margin:10px; padding:0px 10%" > -->
-      <!--<div id="fb-1" style="border: 2px solid #3f51b5;" class="fb-comments" :data-href="'https://peepeepoopoo-37225.firebaseapp.com/#/' + userId" data-width="860" data-numposts="5"></div>-->
-      <!--<div id="fb-1" style="border: 2px solid #73AD21;" class="fb-comments" :data-href="'https://peepeepoopoo-37225.firebaseapp.com/#/'" data-width="560" data-numposts="5"></div>-->
-    <!--</div>-->
   </div>
 
 </template>
@@ -59,24 +55,25 @@ import { db } from './../configs/firebase.js'
       return {
         userId : null,
         poo: {
-          creater_user : null,
+          creater_id : null,
+          creater_name : null,
           description : null,
           place_name : null,
           price : null,
+          showinfocard : null,
           x_location : null,
           y_location : null,
         }
       }
     },
     beforeCreate: function() {
-      db.ref('comment_flag/').once('value', (snap) => {
-        let comment_flag = snap.val();
+   
+      let comment_flag = localStorage.getItem("comment_flag");
 
         if (!comment_flag) {
-          db.ref('comment_flag/').set(true);
+          localStorage.setItem("comment_flag", true);
           location.reload();
         }
-      })
     },
     created: function() {
       //Set Id from add
@@ -87,11 +84,12 @@ import { db } from './../configs/firebase.js'
         //SELECT * FROM toilet_markers WHERE key = 'usserId' 
         db.ref('toilet_markers/' + this.userId).once('value', (snap) => {
         this.poo = snap.val()
+        console.log(this.poo);
         })
    
       },
       beforeDestroy: function() {
-        db.ref('comment_flag/').set(false);
+         localStorage.setItem("comment_flag", false);
       }
   }
 
