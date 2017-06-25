@@ -58,6 +58,8 @@
             <rect width="50px" height="50px" x="25px" y="25px" class="bubble" id="bub11" />
         </svg>
       </div>
+
+
     
   </div>
 </template>
@@ -106,20 +108,6 @@ export default {
           console.log("error: ", error)
 
         });
-    },
-
-    showModal:function() {
-      // let
-    },
-
-    logOut: function() {
-      auth.signOut().then(() => {
-        //handler case log-out success
-        console.log('log out success');
-      }).catch(function(error) {
-        //handler case log-out not success
-        console.log('log out not success');
-        });
       }
     }
 }
@@ -150,6 +138,12 @@ export default {
 
   .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+  .card-logout{
+    position: absolute;
+    right: 0px;
+    z-index: 2;
   }
 
   .title {

@@ -8,7 +8,7 @@
 
       <h2 class="md-title"  style="flex: 1">{{title}}</h2>
 
-      <md-button class="md-icon-button" style="">
+      <md-button class="md-icon-button" style="" @click="boxUserToggle">
         <md-icon>more_vert</md-icon>
       </md-button>
       
@@ -32,13 +32,34 @@
         </span>
     </md-sidenav>
 
+      <!-- CARD UI-->
+    <div class="card-logout" v-if="!isHidden && user">
+     <md-card>
+        <md-card-header>
+          <md-card-header-text>
+            <div class="md-title">{{user.displayName}}</div>
+            <div class="md-subhead"></div>
+          </md-card-header-text>
+
+          <md-card-media>
+            <img :src="user.photoURL" alt="People">
+          </md-card-media>
+        </md-card-header>
+
+        <md-card-actions>
+          <md-button @click="logOut">Logout</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
   </div>
 </template>
 
 <script>
 
 import Images from '../../configs/images.js';
+import { auth } from '../../configs/firebase.js';
 
+console.log( auth.currentUser)
 export default {
   name: 'navbar',
   data: function() {
@@ -51,7 +72,9 @@ export default {
         // { to: '/test-comment', title: 'TestToComment' },
         // { to: '/log-in', title: 'Log-in' }
       ],
-      images: Images
+      images: Images,
+      isHidden: true,
+      user: auth.currentUser,
     }
   },
   methods: {
@@ -60,6 +83,21 @@ export default {
     },
     closeRightSidenav() {
       this.$refs.leftSidenav.close();
+    },
+    boxUserToggle: function(){
+      this.user = auth.currentUser;
+      console.log("kuy chalate", this.user)
+       this.isHidden = !this.isHidden;
+    },
+
+    logOut: function() {
+      auth.signOut().then(() => {
+        //handler case log-out success
+        console.log('log out success');
+      }).catch(function(error) {
+        //handler case log-out not success
+        console.log('log out not success');
+      });
     }
   }
 }
@@ -68,5 +106,11 @@ export default {
 <style scoped>
   h3 {
       margin-left: 5%;
+  }
+  .card-logout{
+    position: absolute;
+    right: 0px;
+    z-index: 9999;
+    width:300px;
   }
 </style>
