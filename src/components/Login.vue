@@ -74,7 +74,8 @@ export default {
     return {
       user: auth.currentUser,
       provider: provider,
-      images: Images
+      images: Images,
+      isLogin: false,
     }
   },
   created:function() {
@@ -105,6 +106,10 @@ export default {
           console.log("error: ", error)
 
         });
+    },
+
+    showModal:function() {
+      // let
     },
 
     logOut: function() {
