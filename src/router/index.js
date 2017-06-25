@@ -27,10 +27,10 @@ export default new Router({
       beforeEnter: (to, from, next) => {
         if (!auth.currentUser) {
           next('/log-in');
+          return;
         }
-
+        
         next();
-
       }
     },  
     {
