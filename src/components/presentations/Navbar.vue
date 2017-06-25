@@ -86,14 +86,19 @@ export default {
     },
     boxUserToggle: function(){
       this.user = auth.currentUser;
-      console.log("kuy chalate", this.user)
+      if(this.user){
        this.isHidden = !this.isHidden;
+      }else{
+        this.$router.replace('/log-in');
+      }
     },
 
     logOut: function() {
       auth.signOut().then(() => {
         //handler case log-out success
+        this.$router.replace('/log-in');
         console.log('log out success');
+        this.isHidden = true;
       }).catch(function(error) {
         //handler case log-out not success
         console.log('log out not success');
