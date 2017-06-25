@@ -60,26 +60,6 @@
       </div>
 
 
-    <!-- CARD UI-->
-    <!--<div style="position:absolute; top:20px; left: 1%;">
-     <md-card>
-        <md-card-header>
-          <md-card-header-text>
-            <div class="md-title">Title goes here</div>
-            <div class="md-subhead">Subtitle here</div>
-          </md-card-header-text>
-
-          <md-card-media>
-            <img src="assets/avatar-2.jpg" alt="People">
-          </md-card-media>
-        </md-card-header>
-
-        <md-card-actions>
-          <md-button>Logout</md-button>
-        </md-card-actions>
-      </md-card>
-    </div>-->
-     
     
   </div>
 </template>
@@ -127,16 +107,6 @@ export default {
           console.log("error: ", error)
 
         });
-    },
-
-    logOut: function() {
-      auth.signOut().then(() => {
-        //handler case log-out success
-        console.log('log out success');
-      }).catch(function(error) {
-        //handler case log-out not success
-        console.log('log out not success');
-        });
       }
     }
 }
@@ -167,6 +137,12 @@ export default {
 
   .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+  .card-logout{
+    position: absolute;
+    right: 0px;
+    z-index: 2;
   }
 
   .title {
