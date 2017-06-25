@@ -17,17 +17,6 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/',
-      name: '',
-      redirect: function() {
-        // if (!auth.currentUser) {
-        return '/log-in'
-        // }
-
-        // return '/search'
-      }
-    },
-    {
       path: '/search',
       name: 'SearchToilet',
       component: SearchToilet,
@@ -75,6 +64,17 @@ export default new Router({
       path: '/log-in',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/',
+      name: '',
+      redirect: function() {
+        // if (!auth.currentUser) {
+        return '/log-in'
+        // }
+
+        // return '/search'
+      }
     }
   ]
 })
