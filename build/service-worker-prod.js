@@ -28,11 +28,11 @@
             if (navigator.serviceWorker.controller) {
               // The updatefound event implies that registration.installing is set
               const installingWorker = registration.installing;
-              window.alert("if you wang to register")
+              // window.alert("if you wang to register")
               installingWorker.onstatechange = function() {
                 switch (installingWorker.state) {
                   case 'installed':
-                  alert("New content is available; please refresh.")
+                  // alert("New content is available; please refresh.")
                     // At this point, the old content will have been purged and the
                     // fresh content will have been added to the cache.
                     // It's the perfect time to display a "New content is

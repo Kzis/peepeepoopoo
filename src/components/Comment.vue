@@ -87,7 +87,6 @@ import { db } from './../configs/firebase.js'
         //SELECT * FROM toilet_markers WHERE key = 'usserId' 
         db.ref('toilet_markers/' + this.userId).once('value', (snap) => {
         this.poo = snap.val()
-        console.log(this.poo) 
         })
    
       },

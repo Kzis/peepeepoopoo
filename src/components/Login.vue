@@ -89,7 +89,7 @@ export default {
       auth.signInWithPopup(this.provider).then((result) => {
         let user = result.user;
         //handler case log-in success 
-          alert("log in success view in log");
+          // alert("log in success view in log");
           console.log("result: ", user);
 
           let name = user.displayName;
