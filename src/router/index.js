@@ -28,7 +28,7 @@ export default new Router({
         console.log("add", auth)
         if (!auth.currentUser) {
           next('/log-in');
-          // return;
+          return;
         }
         
         next();
