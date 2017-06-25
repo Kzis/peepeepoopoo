@@ -14,26 +14,59 @@ import { auth } from '../configs/firebase';
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
       name: 'SearchToilet',
-      component: SearchToilet
+      component: SearchToilet,
+    //   beforeEnter: (to, from, next) => {
+    //     if (!auth.currentUser) {
+    //       next('/log-in');
+    //     }
+
+    //     next();
+
+    //   }
     },
     {
       path: '/add-toilet',
       name: 'AddToilet',
-      component: AddToilet
+      component: AddToilet,
+      beforeEnter: (to, from, next) => {
+        if (!auth.currentUser) {
+          next('/log-in');
+        }
+
+        next();
+
+      }
     },  
     {
       path: '/comment/:userId',
       name: 'Comment',
-      component: Comment
+      component: Comment,
+      beforeEnter: (to, from, next) => {
+        if (!auth.currentUser) {
+          next('/log-in');
+        }
+
+        next();
+
+      }
     },
     {
       path: '/test-comment',
       name: 'TestToComment',
-      component: TestToComment
+      component: TestToComment,
+      beforeEnter: (to, from, next) => {
+        if (!auth.currentUser) {
+          next('/log-in');
+        }
+
+        next();
+
+      }
     },
     {
       path: '/log-in',

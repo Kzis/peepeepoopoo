@@ -96,8 +96,11 @@ export default {
     logOut: function() {
       auth.signOut().then(() => {
         //handler case log-out success
-        this.$router.replace('/log-in');
+<<<<<<< HEAD
         this.$session.destroy()
+=======
+        this.$router.replace('/log-in');
+>>>>>>> ffe7c118945346da4adfe5b3bedd658a0aca5de4
         console.log('log out success');
         this.isHidden = true;
       }).catch(function(error) {

@@ -105,13 +105,14 @@ export default {
             email: email,
             photoUrl: photoUrl
           });
-
+          this.$router.replace('/');
         }).catch(function(error) {
           //handler case log-in not success
           console.log("error: ", error)
 
         });
       }
+
     }
 }
 </script>
