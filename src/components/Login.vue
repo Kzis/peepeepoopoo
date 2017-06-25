@@ -23,63 +23,41 @@
 
 
       <div class="bg-boxes">
-            <svg width="300px" height="100%" id="col1">
-          <rect width="150px" height="150px" x="75px" y="75px" class="bubble" id="bub1" />
+        <svg width="300px" height="100%" id="col1">
+          <rect width="150px" height="150px" x="75px" y="45px" class="bubble" id="bub1" />
         </svg>
         <svg width="200px" height="100%" id="col2">
-          <rect width="100px" height="100px" x="50px" y="50px" class="bubble" id="bub2" />
+          <rect width="100px" height="100px" x="50px" y="20px" class="bubble" id="bub2" />
         </svg>
         <svg width="260px" height="100%" id="col3">
-            <rect width="130px" height="130px" x="65px" y="65px" class="bubble" id="bub3" />
+            <rect width="130px" height="130px" x="65px" y="35px" class="bubble" id="bub3" />
         </svg>
         <svg width="160px" height="100%" id="col4">
-            <rect width="80px" height="80px" x="40px" y="40px" class="bubble" id="bub4" />
+            <rect width="80px" height="80px" x="40px" y="10px" class="bubble" id="bub4" />
         </svg>
         <svg width="240px" height="100%" id="col5">
-            <rect width="120px" height="120px" x="60px" y="60px" class="bubble" id="bub5" />
+            <rect width="120px" height="120px" x="60px" y="30px" class="bubble" id="bub5" />
         </svg>
         <!--Here is a triangle-->
         <svg width="200px" height="100%" id="col6">
             <polygon points="50,150 100,50 150,150" class="bubble" id="bub6" />
         </svg>
         <svg width="200px" height="100%" id="col7">
-            <rect width="100px" height="100px" x="50px" y="50px" class="bubble" id="bub7" />
+            <rect width="100px" height="100px" x="50px" y="20px" class="bubble" id="bub7" />
         </svg>
         <svg width="200px" height="100%" id="col8">
-            <rect width="100px" height="100px" x="50px" y="50px" class="bubble" id="bub8" />
+            <rect width="100px" height="100px" x="50px" y="20px" class="bubble" id="bub8" />
         </svg>
         <svg width="200px" height="100%" id="col9">
-            <rect width="100px" height="100px" x="50px" y="50px" class="bubble" id="bub9" />
+            <rect width="100px" height="100px" x="50px" y="20px" class="bubble" id="bub9" />
         </svg>
         <svg width="200px" height="100%" id="col10">
-            <rect width="100px" height="100px" x="50px" y="50px" class="bubble" id="bub10" />
+            <rect width="100px" height="100px" x="50px" y="20px" class="bubble" id="bub10" />
         </svg>
         <svg width="100px" height="100%" id="col11">
             <rect width="50px" height="50px" x="25px" y="25px" class="bubble" id="bub11" />
         </svg>
       </div>
-
-
-    <!-- CARD UI-->
-    <!--<div style="position:absolute; top:20px; left: 1%;">
-     <md-card>
-        <md-card-header>
-          <md-card-header-text>
-            <div class="md-title">Title goes here</div>
-            <div class="md-subhead">Subtitle here</div>
-          </md-card-header-text>
-
-          <md-card-media>
-            <img src="assets/avatar-2.jpg" alt="People">
-          </md-card-media>
-        </md-card-header>
-
-        <md-card-actions>
-          <md-button>Logout</md-button>
-        </md-card-actions>
-      </md-card>
-    </div>-->
-     
     
   </div>
 </template>
@@ -221,109 +199,6 @@ export default {
     margin: auto;
     padding: 27px 0;
     width: 85%;
-  }
-
-  /*Text-inputs*/
-  .mat-in {
-    position: relative;
-    margin-bottom: 32px;
-  }
-
-  input {
-    border: none;
-    border-bottom: 1px solid #9E9E9E;
-    display: block;
-    font-size: 16px;
-    padding: 8px 0px;
-    -webkit-transition: 0.2s border-bottom;
-    transition: 0.2s border-bottom;
-    width: 100%;
-  }
-
-  input:focus, input:invalid {
-    box-shadow: none;
-    outline: none;
-  }
-
-  input:focus {
-    border-bottom: 1px solid #2196f3;
-  }
-
-  input:focus ~ label, input:valid ~ label {
-    color: #2196f3;
-    font-size: 12px;
-    top: -16px;
-  }
-
-  /*Bar that appears when an input is selected*/
-  .bar:before, .bar:after {
-    background: #2196f3;
-    bottom: 1px;
-    content: '';
-    height: 2px;
-    position: absolute;
-    -webkit-transition: 0.2s ease all;
-    transition: 0.2s ease all;
-    width: 0;
-  }
-
-  .bar:before {
-    left: 50%;
-  }
-
-  .bar:after {
-    right: 50%;
-  }
-
-  input:focus ~ .bar:before, input:focus ~ .bar:after {
-    width: 50%;
-  }
-
-  /*Submit Button*/
-  #login {
-    background: #2196f3;
-    border: none;
-    border-radius: 2px;
-    color: #FFF;
-    cursor: pointer;
-    font-size: 16px;
-    opacity: 0.999;
-    padding: 8px 0;
-    position: relative;
-    -webkit-transition: 0.2s ease background;
-    transition: .2s ease background;
-    width: 100%;
-  }
-
-  #login:hover {
-    background: #1976d2;
-  }
-
-  #login:before, #login:after {
-    border-radius: 2px;
-    content: '';
-    height: 0;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    width: 100%;
-    -webkit-transition: 0.2s ease all;
-    transition: .2s ease all;
-    z-index: -1;
-  }
-
-  #login:before {
-    top: 50%;
-  }
-
-  #login:after {
-    bottom: 50%;
-  }
-
-  #login:active:before, #login:active:after {
-    background: #0d47a1;
-    height: 50%;
-    opacity: 1;
   }
 
   /*Error Messages*/

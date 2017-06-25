@@ -46,10 +46,10 @@ export default {
       title: 'Pee Pee Poo Poo',
       routes: [
         { to: '/', title: 'Search' },
-        { to: '/add-toilet', title: 'Add' },
-        { to: '/comment', title: 'Comment' },
-        { to: '/test-comment', title: 'TestToComment' },
-        { to: '/log-in', title: 'Log-in' }
+        { to: '/add-toilet', title: 'Add' }
+        // { to: '/comment', title: 'Comment' },
+        // { to: '/test-comment', title: 'TestToComment' },
+        // { to: '/log-in', title: 'Log-in' }
       ],
       images: Images
     }
