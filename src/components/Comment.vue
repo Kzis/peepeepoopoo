@@ -4,7 +4,7 @@
 
     <div class="row" style="margin:10px; padding:0px 10%">
 
-        <div class="col-sm-12 card"  style="border: 2px solid #3f51b5; height:300px; width:80vw;">
+        <div class="col-sm-12 card"  style="border: 2px solid #3f51b5; height:350px; width:80vw;">
          
         <h2 align="center">Toliet Description</h2>
 
@@ -25,7 +25,7 @@
         </div>
 
         <div class= "col-lg-offset-3 col-lg-8">
-          <md-input-container style="width:80%;">
+          <md-input-container style="width:80%; height:100px;">
             <md-icon>insert_comment</md-icon>
             <label>Description</label>
             <md-textarea :readonly="true" v-model="poo.description"></md-textarea>
