@@ -59,7 +59,6 @@
 import Images from '../../configs/images.js';
 import { auth } from '../../configs/firebase.js';
 
-console.log( auth.currentUser)
 export default {
   name: 'navbar',
   data: function() {
